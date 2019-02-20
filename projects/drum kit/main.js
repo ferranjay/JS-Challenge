@@ -1,8 +1,10 @@
 
+window.addEventListener('keydown', playSound);
+// we luisteren voor het 'keydown' event ... als dit gebeurd dan voeren we een functie uit die ons het event"info" geeft (e)
 
 
 function playSound(e) {  // als je console.log(e) uitvoert dan kun je de info zien die elke key met zich mee brengt (e) "event" is dus gewoon een object vol met data
-    //console.log(e);            // we zijn geinteresseerd in de keyCode
+    // console.log(e);            // we zijn geinteresseerd in de keyCode
 
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     // we willen een audio element selecteren, daarom gebruiken we de querySelector , 
@@ -27,18 +29,16 @@ function playSound(e) {  // als je console.log(e) uitvoert dan kun je de info zi
 function removeTransition(e) {
     //console.log(e); 
     if (e.propertyName !== 'transform') return;
-    //console.log(e.propertyName);
+
     this.classList.remove('playing');
     //this refereert naar de info van key die gekoppeld is aan .addEventListener
 }
 
 
 const keys = document.querySelectorAll('.key');
-// hier selecteer je alles met de classe key.  in console log zie je een array met elk element die gelinked is met class key
+// hier selecteer je alles met de class genaamd "key.  in console log zie je een array met elk element die gelinked is met class key
         keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 // elke key krijgt een eventListener eraan gekoppeld namelijk 'transitionend' en daar schrijven we een functie voor genaamd removeTransition, indien de transitie afgelopen is willen we iets uitvoeren
 
 
 
-window.addEventListener('keydown', playSound);
-            // we luisteren voor het 'keydown' event ... als dit gebeurd dan voeren we een functie uit die ons het event"info" geeft (e)
